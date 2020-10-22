@@ -12,12 +12,12 @@ import UIKit
 
 class YSArrowView: UIView {
     
-    var color:UIColor = UIColor.init(red: 0.95, green: 0.95, blue: 0.95, alpha: 1)
-    var borderColorf:UIColor = UIColor.init(red: 0.1, green: 0.1, blue: 0.1, alpha: 0.25)
+    var color: UIColor = UIColor.init(red: 0.95, green: 0.95, blue: 0.95, alpha: 1)
+    var borderColorf: UIColor = UIColor.init(red: 0.1, green: 0.1, blue: 0.1, alpha: 0.25)
     
     override func draw(_ rect: CGRect) {
         
-        let w = self.frame.size.width+5
+        let w = self.frame.size.width
         let h = self.frame.size.height
         let margin:CGFloat = 5
         let triangle = UIBezierPath();
