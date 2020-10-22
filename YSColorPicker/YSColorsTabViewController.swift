@@ -9,10 +9,12 @@
 import UIKit
 
 public protocol YSColorsTabViewControllerDelegate {
+    
     func ysChanged(color:UIColor)
 }
 
-public class YSColorsTabViewController: UITabBarController,YSColorLayoutViewControllerDelegate {
+public class YSColorsTabViewController: UITabBarController, YSColorLayoutViewControllerDelegate {
+    
     var defaultColor:UIColor!
     public var ysColorDelegate:YSColorsTabViewControllerDelegate?
     var colorTypes:[YS_COLOR_TYPE] = []
@@ -46,7 +48,9 @@ public class YSColorsTabViewController: UITabBarController,YSColorLayoutViewCont
         super.viewDidLoad()
         
         for (i,ct) in colorTypes.enumerated() {
-            switch ct {
+            
+            switch ct
+            {
             case .YS_COLOR_RGB, .YS_COLOR_RGBA:
                 let rgb:YSRGBViewController! = YSRGBViewController()
                 rgb.setNew(color: defaultColor)
@@ -55,6 +59,7 @@ public class YSColorsTabViewController: UITabBarController,YSColorLayoutViewCont
                 rgb.colorType = ct
                 controllers.append(rgb)
                 break
+                
             case .YS_COLOR_HSB, .YS_COLOR_HSBA:
                 let hsb:YSHSBViewController! = YSHSBViewController()
                 hsb.setNew(color: defaultColor)
@@ -63,6 +68,7 @@ public class YSColorsTabViewController: UITabBarController,YSColorLayoutViewCont
                 hsb.colorType = ct
                 controllers.append(hsb)
                 break
+                
             case .YS_COLOR_PICKER, .YS_COLOR_PICKERA:
                 let picker:YSPickerViewController! = YSPickerViewController()
                 picker.setNew(color: defaultColor)

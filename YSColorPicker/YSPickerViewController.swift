@@ -9,9 +9,11 @@
 import UIKit
 
 class YSPickerViewController: YSColorLayoutViewController {
+    
     var colorType:YS_COLOR_TYPE = .YS_COLOR_PICKER
     
     override func viewDidLoad() {
+        
         super.viewDidLoad()
         self.view.backgroundColor = .clear
         
@@ -76,7 +78,8 @@ class YSPickerViewController: YSColorLayoutViewController {
             self.allBarsUpdateAndDelegate()
         }
         
-        if let al = alpha{
+        if let al = alpha {
+            
             self.addChild(al)
             self.view.addSubview(al.view)
             al.didMove(toParent: self)
@@ -93,20 +96,27 @@ class YSPickerViewController: YSColorLayoutViewController {
         
     }
     
-    override func setNew(color:UIColor){
+    override func setNew(color:UIColor) {
+        
         super.setNew(color: color)
         color.getHue(&h, saturation: &s, brightness: &b, alpha: &a)
-        if(colorControllers.count>0){
-            if let picker = colorControllers[0] as? YSPickerUnitViewController{
+        
+        if(colorControllers.count>0) {
+            
+            if let picker = colorControllers[0] as? YSPickerUnitViewController {
+                
                 picker.currentBrightnessValue = Double(1-b)
                 picker.currentSaturationValue = Double(s)
                 picker.currentValue = Double(h)
             }
         }
-        if(colorControllers.count==3){
+        
+        if(colorControllers.count==3) {
+            
             colorControllers[1].currentValue = Double(h)*colorControllers[1].maxValue
             colorControllers[2].currentValue = Double(a)*colorControllers[2].maxValue
-        }else if(colorControllers.count==2){
+            
+        } else if (colorControllers.count==2){
             colorControllers[1].currentValue = Double(h)*colorControllers[1].maxValue
         }
     }

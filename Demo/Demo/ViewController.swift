@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ViewController: UIViewController,YSColorsTabViewControllerDelegate {
+class ViewController: UIViewController, YSColorsTabViewControllerDelegate {
 
     
     @IBOutlet weak var btn: UIButton!
@@ -23,6 +23,7 @@ class ViewController: UIViewController,YSColorsTabViewControllerDelegate {
         // Dispose of any resources that can be recreated.
     }
     @IBAction func pushed(_ sender: Any) {
+        
         let tabvc = YSColorsTabViewController(color: btn.backgroundColor!, colorTypes: [
             .YS_COLOR_PICKER,
             .YS_COLOR_PICKERA,
@@ -31,6 +32,7 @@ class ViewController: UIViewController,YSColorsTabViewControllerDelegate {
             .YS_COLOR_HSB,
             .YS_COLOR_HSBA
             ])
+        
         tabvc.view.backgroundColor = .white
         tabvc.modalPresentationStyle = .fullScreen
         tabvc.ysColorDelegate = self

@@ -6,15 +6,20 @@
 //  Copyright © 2018年 Yosuke Seki. All rights reserved.
 //
 
+// p I believe the two color rectangles/button at the top, with an arrow inbetween. Not sure which button, the old or the dynamic one that shows the color as the user changes it.
+
 import UIKit
 
 class YSBeforeAfterColorViewController: UIViewController {
-    var isInit:Bool = false
-    var beforeTapFunc:(()->())!
-    var beforeColor:UIColor = .yellow
-    var afterColor:UIColor = .cyan
-    var arrowColor:UIColor = .red
-    var btnAfter:UIButton?
+    
+    var isInit: Bool = false
+    var beforeTapFunc: (()->())!
+    var beforeColor: UIColor = .yellow
+    var afterColor: UIColor = .cyan
+    var arrowColor: UIColor = .red
+    
+    var btnAfter: UIButton?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -26,7 +31,9 @@ class YSBeforeAfterColorViewController: UIViewController {
     
 
     override func viewDidLayoutSubviews() {
+        
         super.viewDidLayoutSubviews()
+        
         if(!isInit){
             isInit = true
             
