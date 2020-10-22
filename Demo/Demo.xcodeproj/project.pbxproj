@@ -79,6 +79,7 @@
 			isa = PBXGroup;
 			children = (
 				9CA942382479139900F44132 /* YSColorPicker */,
+				9CA9423A2479139900F44132 /* YSColorsTabViewController.swift */,
 				9C104D59202989C5006C4AB2 /* Demo */,
 				9C104D58202989C5006C4AB2 /* Products */,
 			);
@@ -109,12 +110,11 @@
 			isa = PBXGroup;
 			children = (
 				9CA942422479139900F44132 /* YSColorPicker.h */,
-				9CA9423A2479139900F44132 /* YSColorsTabViewController.swift */,
-				E2859B64254219BF00F38F9C /* layout */,
 				E2859B612542161400F38F9C /* top_swatches_and_arrow */,
 				E2859B622542164100F38F9C /* knob */,
 				E2859B65254219D000F38F9C /* bar_rectangles */,
 				E2859B632542191600F38F9C /* colorbars_labels_steppers */,
+				E2859B64254219BF00F38F9C /* layout */,
 				E2B024AD25421CE5004FA378 /* PICKER */,
 				E2B024AE25421D02004FA378 /* RGB */,
 				E2B024AF25421D1C004FA378 /* HSB */,

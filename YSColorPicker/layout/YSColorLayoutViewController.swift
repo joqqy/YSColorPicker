@@ -62,11 +62,11 @@ class YSColorLayoutViewController: UIViewController {
     
     var r: CGFloat = 0.0
     var g: CGFloat = 0.0
-    var b: CGFloat = 0.0
+    var b: CGFloat = 0.0 // used for blue and brightness
     
-    var h: CGFloat = 0.0
-    var s: CGFloat = 0.0
-    var a: CGFloat = 1.0
+    var h: CGFloat = 0.0 // hue
+    var s: CGFloat = 0.0 // saturation
+    var a: CGFloat = 1.0 // alpha
     
     override var prefersStatusBarHidden: Bool {
         return !YSColorLayoutViewController.is_iPhoneX

@@ -8,6 +8,8 @@
 
 import UIKit
 
+// p note the super class YSColorLayoutViewController, that class contains the color determination functions like: huePickerColors, which we hacked
+// to keep spectrum bar colors constant in saturation and brightness.
 class YSPickerViewController: YSColorLayoutViewController {
     
     var colorType: YS_COLOR_TYPE = .YS_COLOR_PICKER
@@ -17,16 +19,17 @@ class YSPickerViewController: YSColorLayoutViewController {
         super.viewDidLoad()
         self.view.backgroundColor = .clear
         
+        // p the gradient hsv box
         let picker = YSPickerUnitViewController(maxSaturationValue: 1,
                                                 currentSaturationValue: Double(s),
                                                 maxBrightnessValue: 1,
                                                 currentBrightnessValue: Double(1-b),
                                                 colorFunc: pickerColors)
         
-        
+        // p this determines the hue spectrum color bar, we hacked *huePickerColors* so that saturation and brightness remain constant
         let hue = YSColorUnitViewController(name: "Hue:",
                                             maxValue: 360,
-                                            currentValue: 360*Double(h),
+                                            currentValue: 360 * Double(h),
                                             step: 1,
                                             colorFunc: huePickerColors)
         
