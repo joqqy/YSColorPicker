@@ -61,8 +61,8 @@ class YSPickerUnitViewController: YSUnitViewController {
         self.maxBrightnessValue = maxBrightnessValue
         self._currentSaturationValue = currentSaturationValue
         self._currentBrightnessValue = currentBrightnessValue
-        self.colorFunc = colorFunc
-        rowspan = 2
+        super.colorFunc = colorFunc
+        super.rowspan = 2
     }
     
     @available (*, unavailable, message: "Please use the initializer as init(maxSaturationValue:,currentSaturationValue:,maxBrightnessValue:,currentBrightnessValue:,colorFunc:)")
@@ -81,10 +81,14 @@ class YSPickerUnitViewController: YSUnitViewController {
     override func viewDidLoad() {
         
         super.viewDidLoad()
+        
+        // Add the hsb gradient box
         self.view.addSubview(bg)
         self.view.addSubview(colorBar)
         self.view.addSubview(colorBarBrightness)
+        // Add the knob/handle
         self.view.addSubview(knob)
+        // Make sure we can move it in y axis too(x is already movable by default)
         colorBar.movableY = true
     }
 
@@ -97,7 +101,8 @@ class YSPickerUnitViewController: YSUnitViewController {
         
         let w = self.view.frame.size.width
         let h = self.view.frame.size.height
-        bg.frame = CGRect(x: 0, y: 0, width: w, height: h)
+        bg.frame = CGRect(x: 0, y: 0,
+                          width: w, height: h)
         bg.backgroundColor = .clear
         bg.setNeedsDisplay()
         
@@ -105,7 +110,8 @@ class YSPickerUnitViewController: YSUnitViewController {
         colorBarBrightness.frame = bg.frame
         colorBarBrightness.makeY(colors: pickerBrightnessColors())
         colorBarBrightness.isUserInteractionEnabled = false
-        knob.frame = CGRect(x: 0, y: 0, width: 9, height: 9)
+        knob.frame = CGRect(x: 0, y: 0,
+                            width: 9, height: 9)
         knob.make(true)
         
         currentSaturationValue = _currentSaturationValue //入れ直して位置を再計算
@@ -114,10 +120,10 @@ class YSPickerUnitViewController: YSUnitViewController {
         update()
     }
     
-    override func update(){
+    override func update() {
         
-        knob.frame.origin.x = max(0,colorBar.frame.width*CGFloat(_currentSaturationValue/maxSaturationValue))
-        knob.frame.origin.y = max(0,colorBar.frame.height*CGFloat(_currentBrightnessValue/maxBrightnessValue))
+        knob.frame.origin.x = max(0, colorBar.frame.width * CGFloat(_currentSaturationValue/maxSaturationValue))
+        knob.frame.origin.y = max(0, colorBar.frame.height * CGFloat(_currentBrightnessValue/maxBrightnessValue))
 
         CATransaction.begin()
         CATransaction.setValue(kCFBooleanTrue, forKey: kCATransactionDisableActions)

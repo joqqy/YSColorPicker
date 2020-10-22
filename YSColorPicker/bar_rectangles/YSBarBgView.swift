@@ -8,7 +8,7 @@
 
 import UIKit
 
-// p The background of the spectrum rectangle(and other color bars) (stacked under the spectrum gradient view)
+// p The checkered background of the color bars or hsv gradient box
 // p this background is checkered and if alpha is < 1 then this is shown below.
 
 class YSBarBgView: UIView {
@@ -28,7 +28,7 @@ class YSBarBgView: UIView {
                     
                     if(x%2 == 0){
                         UIColor.lightGray.setFill()
-                    }else{
+                    } else {
                         UIColor.gray.setFill()
                     }
                     
@@ -41,12 +41,10 @@ class YSBarBgView: UIView {
                     }
                 }
                 
-                let rectangle = UIBezierPath(rect: CGRect(
-                    x: CGFloat(x) * size,
-                    y: CGFloat(y) * size,
-                    width: size,
-                    height: size
-                ))
+                let rectangle = UIBezierPath(rect: CGRect(x: CGFloat(x) * size,
+                                                          y: CGFloat(y) * size,
+                                                          width: size,
+                                                          height: size))
                 
                 rectangle.lineWidth = 0
                 rectangle.fill()

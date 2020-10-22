@@ -59,9 +59,11 @@ class YSColorLayoutViewController: UIViewController {
     var isLayouted: Bool = false
     var doneBtn: UIButton! = UIButton()
     var beforeAfter: YSBeforeAfterColorViewController? = YSBeforeAfterColorViewController()
+    
     var r: CGFloat = 0.0
     var g: CGFloat = 0.0
     var b: CGFloat = 0.0
+    
     var h: CGFloat = 0.0
     var s: CGFloat = 0.0
     var a: CGFloat = 1.0
@@ -142,6 +144,7 @@ class YSColorLayoutViewController: UIViewController {
                 top = marginTB+beforeAfterHeight+insets.top
                 
             } else {
+                
                 if(height == maxHeight){
                     space = min((h - height*count - doneHeight - marginTB*3)/countM1, maxSpace)
                 }
@@ -189,10 +192,10 @@ class YSColorLayoutViewController: UIViewController {
         }
     }
     
-    func changed(){
+    func changed() {
     }
     
-    func finishing(){
+    func finishing() {
         
         beforeAfter?.removeFromParent()
         beforeAfter?.view.removeFromSuperview()
@@ -250,6 +253,10 @@ class YSColorLayoutViewController: UIViewController {
         
         var colors: [CGColor] = []
         let stride1 = stride(from: 1, to: 0, by: -0.05)
+        
+        // MARK: p hack, we do not want the hue to change either saturation or brightness, we want it constant!
+        s = 1.0 // keep saturation constant
+        b = 1.0 // keep brightness constant
         
         for i in stride1 {
             

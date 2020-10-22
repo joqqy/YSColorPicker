@@ -24,24 +24,22 @@ class YSPickerViewController: YSColorLayoutViewController {
                                                 colorFunc: pickerColors)
         
         
-        let hue = YSColorUnitViewController(
-            name: "Hue:",
-            maxValue: 360,
-            currentValue: 360*Double(h),
-            step: 1,
-            colorFunc: huePickerColors
-        )
+        let hue = YSColorUnitViewController(name: "Hue:",
+                                            maxValue: 360,
+                                            currentValue: 360*Double(h),
+                                            step: 1,
+                                            colorFunc: huePickerColors)
         
         
         var alpha: YSColorUnitViewController?
         if(colorType == .YS_COLOR_PICKERA) {
-            alpha = YSColorUnitViewController(
-                name: "Alpha:",
-                maxValue: 100,
-                currentValue: 100*Double(a),
-                step: 1,
-                colorFunc: hsbAlphaPickerColors
-            )
+            
+            alpha = YSColorUnitViewController(name: "Alpha:",
+                                              maxValue: 100,
+                                              currentValue: 100*Double(a),
+                                              step: 1,
+                                              colorFunc: hsbAlphaPickerColors)
+            
             colorControllers = [picker,hue,alpha!]
             
         } else {
@@ -53,8 +51,8 @@ class YSPickerViewController: YSColorLayoutViewController {
         self.addChild(picker)
         self.view.addSubview(picker.view)
         picker.didMove(toParent: self)
-        picker.colorBar.slidedClosure = { (perX:Double) in }
-        picker.colorBar.slidedClosureY = { (perX:Double,perY:Double) in
+        picker.colorBar.slidedClosure = { (perX: Double) in }
+        picker.colorBar.slidedClosureY = { (perX: Double,perY: Double) in
             self.s = CGFloat(perX)
             picker.currentSaturationValue = perX
             self.b = CGFloat(1-perY)
@@ -67,7 +65,7 @@ class YSPickerViewController: YSColorLayoutViewController {
         self.addChild(hue)
         self.view.addSubview(hue.view)
         hue.didMove(toParent: self)
-        hue.stepperChangedFunc = { (value:Double) in
+        hue.stepperChangedFunc = { (value: Double) in
             self.h = CGFloat(value/hue.maxValue)
             self.allBarsUpdateAndDelegate()
         }
@@ -95,12 +93,12 @@ class YSPickerViewController: YSColorLayoutViewController {
         
     }
     
-    override func setNew(color:UIColor) {
+    override func setNew(color: UIColor) {
         
         super.setNew(color: color)
         color.getHue(&h, saturation: &s, brightness: &b, alpha: &a)
         
-        if(colorControllers.count>0) {
+        if(colorControllers.count > 0) {
             
             if let picker = colorControllers[0] as? YSPickerUnitViewController {
                 
@@ -110,12 +108,12 @@ class YSPickerViewController: YSColorLayoutViewController {
             }
         }
         
-        if(colorControllers.count==3) {
+        if(colorControllers.count == 3) {
             
             colorControllers[1].currentValue = Double(h)*colorControllers[1].maxValue
             colorControllers[2].currentValue = Double(a)*colorControllers[2].maxValue
             
-        } else if (colorControllers.count==2) {
+        } else if (colorControllers.count == 2) {
             colorControllers[1].currentValue = Double(h)*colorControllers[1].maxValue
         }
     }

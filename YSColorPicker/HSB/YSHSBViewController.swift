@@ -9,48 +9,45 @@
 import UIKit
 
 class YSHSBViewController: YSColorLayoutViewController {
-    var colorType:YS_COLOR_TYPE = .YS_COLOR_HSBA
+    
+    var colorType: YS_COLOR_TYPE = .YS_COLOR_HSBA
     
     override func viewDidLoad() {
+        
         super.viewDidLoad()
         self.view.backgroundColor = .clear
         
-        let hue = YSColorUnitViewController(
-            name: "Hue:",
-            maxValue: 360,
-            currentValue: 360*Double(h),
-            step: 1,
-            colorFunc: huePickerColors
-        )
+        let hue = YSColorUnitViewController(name: "Hue:",
+                                            maxValue: 360,
+                                            currentValue: 360 * Double(h),
+                                            step: 1,
+                                            colorFunc: huePickerColors)
         
-        let saturation = YSColorUnitViewController(
-            name: "Saturation:",
-            maxValue: 100,
-            currentValue: 100*Double(s),
-            step: 1,
-            colorFunc: satPickerColors
-        )
+        let saturation = YSColorUnitViewController(name: "Saturation:",
+                                                   maxValue: 100,
+                                                   currentValue: 100 * Double(s),
+                                                   step: 1,
+                                                   colorFunc: satPickerColors)
         
-        let brightness = YSColorUnitViewController(
-            name: "Brightness:",
-            maxValue: 100,
-            currentValue: 100*Double(b),
-            step: 1,
-            colorFunc: briPickerColors
-        )
+        let brightness = YSColorUnitViewController(name: "Brightness:",
+                                                   maxValue: 100,
+                                                   currentValue: 100 * Double(b),
+                                                   step: 1,
+                                                   colorFunc: briPickerColors)
 
-        var alpha:YSColorUnitViewController?
+        var alpha: YSColorUnitViewController?
         if(colorType == .YS_COLOR_HSBA){
-            alpha = YSColorUnitViewController(
-                name: "Alpha:",
-                maxValue: 100,
-                currentValue: 100*Double(a),
-                step: 1,
-                colorFunc: hsbAlphaPickerColors
-            )
-            colorControllers = [hue,saturation,brightness,alpha!]
-        }else{
-            colorControllers = [hue,saturation,brightness]
+            
+            alpha = YSColorUnitViewController(name: "Alpha:",
+                                              maxValue: 100,
+                                              currentValue: 100 * Double(a),
+                                              step: 1,
+                                              colorFunc: hsbAlphaPickerColors)
+            
+            colorControllers = [hue, saturation, brightness, alpha!]
+            
+        } else {
+            colorControllers = [hue, saturation, brightness]
         }
         
         

@@ -17,15 +17,16 @@ public protocol YSColorsTabViewControllerDelegate {
 
 public class YSColorsTabViewController: UITabBarController, YSColorLayoutViewControllerDelegate {
     
-    var defaultColor:UIColor!
-    public var ysColorDelegate:YSColorsTabViewControllerDelegate?
-    var colorTypes:[YS_COLOR_TYPE] = []
-    var controllers:[YSColorLayoutViewController] = []
+    var defaultColor: UIColor!
+    public var ysColorDelegate: YSColorsTabViewControllerDelegate?
+    var colorTypes: [YS_COLOR_TYPE] = []
+    var controllers: [YSColorLayoutViewController] = []
     
     
     
     
-    public init(color:UIColor,colorTypes:[YS_COLOR_TYPE]) {
+    public init(color: UIColor,colorTypes: [YS_COLOR_TYPE]) {
+        
         self.defaultColor = color
         self.colorTypes = colorTypes
         super.init(nibName: nil, bundle: nil)
@@ -47,6 +48,7 @@ public class YSColorsTabViewController: UITabBarController, YSColorLayoutViewCon
     
     
     override public func viewDidLoad() {
+        
         super.viewDidLoad()
         
         for (i, ct) in colorTypes.enumerated() {
@@ -54,7 +56,8 @@ public class YSColorsTabViewController: UITabBarController, YSColorLayoutViewCon
             switch ct
             {
             case .YS_COLOR_RGB, .YS_COLOR_RGBA:
-                let rgb:YSRGBViewController! = YSRGBViewController()
+                
+                let rgb: YSRGBViewController! = YSRGBViewController()
                 rgb.setNew(color: defaultColor)
                 rgb.tabBarItem = UITabBarItem.init(title: ct.rawValue, image: nil, tag: i)
                 rgb.delegate = self
@@ -63,7 +66,8 @@ public class YSColorsTabViewController: UITabBarController, YSColorLayoutViewCon
                 break
                 
             case .YS_COLOR_HSB, .YS_COLOR_HSBA:
-                let hsb:YSHSBViewController! = YSHSBViewController()
+                
+                let hsb: YSHSBViewController! = YSHSBViewController()
                 hsb.setNew(color: defaultColor)
                 hsb.tabBarItem = UITabBarItem.init(title: ct.rawValue, image: nil, tag: i)
                 hsb.delegate = self
@@ -71,8 +75,10 @@ public class YSColorsTabViewController: UITabBarController, YSColorLayoutViewCon
                 controllers.append(hsb)
                 break
                 
+                // p this is the photoshop spectrum-hsb type
             case .YS_COLOR_PICKER, .YS_COLOR_PICKERA:
-                let picker:YSPickerViewController! = YSPickerViewController()
+                
+                let picker: YSPickerViewController! = YSPickerViewController()
                 picker.setNew(color: defaultColor)
                 picker.tabBarItem = UITabBarItem.init(title: ct.rawValue, image: nil, tag: i)
                 picker.delegate = self
@@ -92,10 +98,12 @@ public class YSColorsTabViewController: UITabBarController, YSColorLayoutViewCon
     }
     func changed(color: UIColor) {
         
-        for (i,vc) in controllers.enumerated() {
-            if(i != self.selectedIndex){
+        for (i, vc) in controllers.enumerated() {
+            
+            if(i != self.selectedIndex) {
                 vc.setNew(color: color)
-            }else{
+                
+            } else {
                 vc.setAfter(color: color)
             }
         }
@@ -103,8 +111,11 @@ public class YSColorsTabViewController: UITabBarController, YSColorLayoutViewCon
     }
     
     func finished() {
+        
         self.dismiss(animated: true, completion: {
+            
             for vc in self.controllers {
+                
                 vc.finishing()
                 vc.removeFromParent()
             }

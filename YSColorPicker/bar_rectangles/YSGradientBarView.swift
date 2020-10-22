@@ -27,9 +27,9 @@ class YSGradientBarView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
     
-    // MARK: Making the gradient of the spectrum rectangle
+    // MARK: Making the gradient of the color bars/box
     
-    func make(colors:[CGColor]){
+    func make(colors: [CGColor]) {
         
         colorGradient.startPoint = CGPoint(x: 1, y: 0.5)
         colorGradient.endPoint = CGPoint(x: 0, y: 0.5)
@@ -37,7 +37,7 @@ class YSGradientBarView: UIView {
         colorGradient.frame = self.bounds
     }
     
-    func makeY(colors:[CGColor]){
+    func makeY(colors: [CGColor]) {
         
         colorGradient.startPoint = CGPoint(x: 0.5, y: 0)
         colorGradient.endPoint = CGPoint(x: 0.5, y: 1)
@@ -48,39 +48,43 @@ class YSGradientBarView: UIView {
 
     
     
-    //MARK: - パーセント取得
-    func getPer(x: Double) -> Double{
+    // MARK: - パーセント取得
+    func getPer(x: Double) -> Double {
+        
         let per = min(1.0, max(0, x/Double(self.frame.width)))
         return per
     }
     
-    func getPer(y: Double) -> Double{
+    func getPer(y: Double) -> Double {
+        
         let per = min(1.0, max(0, y/Double(self.frame.height)))
         return per
     }
     
     
-    //MARK: - タッチ関連
-    func calc(touch:UITouch){
+    // MARK: - タッチ関連
+    func calc(touch: UITouch) {
         
         let p = touch.location(in: self)
         let x = Double(max(0, min(self.frame.width, p.x)))
         
-        if(movableY){
+        // p for the hsb gradient box, it is movable in y as well as x
+        if(movableY) {
             
             let y = Double(max(0, min(self.frame.height, p.y)))
-            slidedClosureY?(getPer(x:x),getPer(y:y))
+            slidedClosureY?(getPer(x: x),
+                            getPer(y: y))
             
         } else {
-            slidedClosure(getPer(x:x))
+            slidedClosure(getPer(x: x))
         }
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         
-        if(touches.count == 1){
+        if(touches.count == 1) {
             
-            if let t = touches.first{
+            if let t = touches.first {
                 calc(touch:t)
             }
         }
@@ -88,9 +92,9 @@ class YSGradientBarView: UIView {
     
     override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
         
-        if(touches.count == 1){
+        if(touches.count == 1) {
             
-            if let t = touches.first{
+            if let t = touches.first {
                 calc(touch:t)
             }
         }
