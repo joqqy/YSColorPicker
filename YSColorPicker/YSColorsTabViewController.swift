@@ -6,6 +6,8 @@
 //  Copyright © 2018年 Yosuke Seki. All rights reserved.
 //
 
+// Probably the bar at the bottom where we pick the color picking mode
+
 import UIKit
 
 public protocol YSColorsTabViewControllerDelegate {
@@ -47,7 +49,7 @@ public class YSColorsTabViewController: UITabBarController, YSColorLayoutViewCon
     override public func viewDidLoad() {
         super.viewDidLoad()
         
-        for (i,ct) in colorTypes.enumerated() {
+        for (i, ct) in colorTypes.enumerated() {
             
             switch ct
             {

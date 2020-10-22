@@ -8,8 +8,11 @@
 
 import UIKit
 
+// p Most likely just adjusts the layout of all the components
+
 
 public enum YS_COLOR_TYPE:String {
+    
     case YS_COLOR_RGBA = "RGBA"
     case YS_COLOR_RGB = "RGB"
     case YS_COLOR_HSBA = "HSBA"
@@ -21,13 +24,16 @@ public enum YS_COLOR_TYPE:String {
 
 
 protocol YSColorLayoutViewControllerDelegate {
-    func changed(color:UIColor)
+    
+    func changed(color: UIColor)
     func finished()
     func getDefaultColor() -> UIColor
 }
 
 class YSColorLayoutViewController: UIViewController {
+    
     static let is_iPhoneX: Bool =  {
+        
         var systemInfo = utsname()
         uname(&systemInfo)
         let machineMirror = Mirror(reflecting: systemInfo.machine)
@@ -36,26 +42,28 @@ class YSColorLayoutViewController: UIViewController {
             return identifier + String(UnicodeScalar(UInt8(value)))
         }
         
-        switch identifier {
+        switch identifier
+        {
         case "iPhone10,3", "iPhone10,6":
             return true
+            
         default:
             return false
         }
     }()
     
-    var aftColor:UIColor? = nil
-    var delegate:YSColorLayoutViewControllerDelegate?
-    var colorControllers:[YSUnitViewController] = []
-    var isLayouted:Bool = false
-    var doneBtn:UIButton! = UIButton()
-    var beforeAfter:YSBeforeAfterColorViewController? = YSBeforeAfterColorViewController()
-    var r:CGFloat = 0.0
-    var g:CGFloat = 0.0
-    var b:CGFloat = 0.0
-    var h:CGFloat = 0.0
-    var s:CGFloat = 0.0
-    var a:CGFloat = 1.0
+    var aftColor: UIColor? = nil
+    var delegate: YSColorLayoutViewControllerDelegate?
+    var colorControllers: [YSUnitViewController] = []
+    var isLayouted: Bool = false
+    var doneBtn: UIButton! = UIButton()
+    var beforeAfter: YSBeforeAfterColorViewController? = YSBeforeAfterColorViewController()
+    var r: CGFloat = 0.0
+    var g: CGFloat = 0.0
+    var b: CGFloat = 0.0
+    var h: CGFloat = 0.0
+    var s: CGFloat = 0.0
+    var a: CGFloat = 1.0
     
     override var prefersStatusBarHidden: Bool {
         return !YSColorLayoutViewController.is_iPhoneX
@@ -73,15 +81,17 @@ class YSColorLayoutViewController: UIViewController {
     
     
     override func viewDidLayoutSubviews() {
+        
         if(!isLayouted){
+            
             isLayouted = true
             
             let w = self.view.frame.size.width
             let h = self.view.frame.size.height
-            let marginLR:CGFloat = 35
-            let marginTB:CGFloat = 30
-            let beforeAfterHeight:CGFloat = 30
-            let fullWidth = w-marginLR*2
+            let marginLR: CGFloat = 35
+            let marginTB: CGFloat = 30
+            let beforeAfterHeight: CGFloat = 30
+            let fullWidth = w-(marginLR * 2)
             
             self.addChild(beforeAfter!)
             self.view.addSubview(beforeAfter!.view)
@@ -103,13 +113,13 @@ class YSColorLayoutViewController: UIViewController {
             for vc in colorControllers{
                 count += vc.rowspan
             }
-            let countM1:CGFloat = count-1
+            let countM1: CGFloat = count-1
             
-            let maxSpace:CGFloat = 45
-            var space:CGFloat = 10
-            let doneHeight:CGFloat = 50
-            let maxHeight:CGFloat = 150
-            var top:CGFloat = marginTB+beforeAfterHeight
+            let maxSpace: CGFloat = 45
+            var space: CGFloat = 10
+            let doneHeight: CGFloat = 50
+            let maxHeight: CGFloat = 150
+            var top: CGFloat = marginTB+beforeAfterHeight
             var height = min((h - top - doneHeight - marginTB*3 - space*countM1)/count, maxHeight)
             
             
@@ -175,6 +185,7 @@ class YSColorLayoutViewController: UIViewController {
     }
     
     func finishing(){
+        
         beforeAfter?.removeFromParent()
         beforeAfter?.view.removeFromSuperview()
         beforeAfter = nil

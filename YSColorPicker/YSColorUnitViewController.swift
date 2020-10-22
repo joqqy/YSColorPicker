@@ -6,22 +6,23 @@
 //  Copyright © 2018年 Yosuke Seki. All rights reserved.
 //
 
+// Most likely the Text with the "hue:<value>" info, and the -|+ stepper control (just below the gradient box, just above the spectrum view)
+// But also adds the spectrum color bar
+
 import UIKit
 
-
-
 class YSColorUnitViewController: YSUnitViewController {
-   
     
     var stepperChangedFunc:((Double)->())?
-    var name:String = "" //R,G,B,Brightness.. etc
+    var name: String = "" // R,G,B,Brightness.. etc
 
-    var margin:CGFloat = 10
-    var label:UILabel! = UILabel()
-    var stepper:UIStepper! = UIStepper()
+    var margin: CGFloat = 10
+    var label: UILabel! = UILabel()
+    var stepper: UIStepper! = UIStepper()
 
     
     init(name:String, maxValue:Double, currentValue:Double, step:Double, colorFunc:@escaping (()->([CGColor]))) {
+        
         super.init(nibName: nil, bundle: nil)
         self.name = name
         self.maxValue = maxValue
@@ -45,13 +46,16 @@ class YSColorUnitViewController: YSUnitViewController {
 
 
     override func viewDidLoad() {
+        
         super.viewDidLoad()
         
         self.view.addSubview(label)
         self.view.addSubview(stepper)
-        self.view.addSubview(bg)
-        self.view.addSubview(colorBar)
-        self.view.addSubview(knob)
+        
+        self.view.addSubview(bg) // p the background for the spectrum rectangle
+        self.view.addSubview(colorBar) // p the spectrum color rectangle
+        
+        self.view.addSubview(knob) // p the hsv gradient knob/handle
         
         stepper.maximumValue = maxValue
         stepper.minimumValue = minValue
@@ -67,6 +71,7 @@ class YSColorUnitViewController: YSUnitViewController {
     }
     
     override func viewDidLayoutSubviews() {
+        
         super.viewDidLayoutSubviews()
             let w = self.view.frame.size.width
             let h = self.view.frame.size.height
@@ -85,7 +90,8 @@ class YSColorUnitViewController: YSUnitViewController {
             update()
     }
     
-    override func update(){
+    override func update() {
+        
         knob.frame.origin.x = max(0,colorBar.frame.width*CGFloat(_currentValue/maxValue))
         stepper.value = _currentValue
         label.text = name + Int(_currentValue).description
@@ -95,12 +101,13 @@ class YSColorUnitViewController: YSUnitViewController {
         CATransaction.commit()
     }
     
-    @objc func onStepperChange(stepper:UIStepper){
+    @objc func onStepperChange(stepper:UIStepper) {
+        
         currentValue = stepper.value
         stepperChangedFunc?(stepper.value)
     }
     
-    override func finishing(){
+    override func finishing() {
         
         label.removeFromSuperview()
         stepper.removeFromSuperview()

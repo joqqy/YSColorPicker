@@ -10,8 +10,8 @@ import UIKit
 
 
 class YSRGBViewController: YSColorLayoutViewController {
+    
     var colorType:YS_COLOR_TYPE = .YS_COLOR_RGBA
-
 
     
     override func viewDidLoad() {

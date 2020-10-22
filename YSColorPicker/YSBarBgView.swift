@@ -8,35 +8,46 @@
 
 import UIKit
 
+// p The background of the spectrum rectangle(and other color bars) (stacked under the spectrum gradient view)
+// p this background is checkered and if alpha is < 1 then this is shown below.
+
 class YSBarBgView: UIView {
 
     // Only override draw() if you perform custom drawing.
     // An empty implementation adversely affects performance during animation.
     override func draw(_ rect: CGRect) {
-        let size:CGFloat = 10
+        
+        let size: CGFloat = 10
         let w = self.frame.size.width
         let h = self.frame.size.height
+        
         for y in 0...Int(ceil(h/size)) {
             for x in 0...Int(ceil(w/size)) {
+                
                 if(y%2 == 0){
+                    
                     if(x%2 == 0){
                         UIColor.lightGray.setFill()
                     }else{
                         UIColor.gray.setFill()
                     }
-                }else{
+                    
+                } else {
+                    
                     if(x%2 == 0){
                         UIColor.gray.setFill()
                     }else{
                         UIColor.lightGray.setFill()
                     }
                 }
+                
                 let rectangle = UIBezierPath(rect: CGRect(
-                    x: CGFloat(x)*size,
-                    y: CGFloat(y)*size,
+                    x: CGFloat(x) * size,
+                    y: CGFloat(y) * size,
                     width: size,
                     height: size
                 ))
+                
                 rectangle.lineWidth = 0
                 rectangle.fill()
             }

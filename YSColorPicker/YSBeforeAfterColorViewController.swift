@@ -6,7 +6,8 @@
 //  Copyright © 2018年 Yosuke Seki. All rights reserved.
 //
 
-// p I believe the two color rectangles/button at the top, with an arrow inbetween. Not sure which button, the old or the dynamic one that shows the color as the user changes it.
+// p I believe the two color rectangles/button at the top, with an arrow inbetween.
+// Not sure which button(probably both), the old or the dynamic one that shows the color as the user changes it.
 
 import UIKit
 

@@ -9,12 +9,13 @@
 import UIKit
 
 class YSUnitViewController: UIViewController {
-    var rowspan:CGFloat = 1
-    var colorFunc:(()->([CGColor]))!
-    var isInit:Bool = false
-    var minValue:Double = 0
-    var maxValue:Double = 0
-    var _currentValue:Double = 0
+    
+    var rowspan: CGFloat = 1
+    var colorFunc: (()->([CGColor]))!
+    var isInit: Bool = false
+    var minValue: Double = 0
+    var maxValue: Double = 0
+    var _currentValue: Double = 0
     var currentValue: Double {
         get{
             return _currentValue
@@ -25,9 +26,9 @@ class YSUnitViewController: UIViewController {
             update()
         }
     }
-    var colorBar:YSGradientBarView! = YSGradientBarView()
-    var knob:YSGradientKnobView! = YSGradientKnobView(color: .white)
-    var bg:UIView! = YSBarBgView()
+    var colorBar: YSGradientBarView! = YSGradientBarView()
+    var knob: YSGradientKnobView! = YSGradientKnobView(color: .white)
+    var bg: UIView! = YSBarBgView()
 
     override func viewDidLoad() {
         super.viewDidLoad()

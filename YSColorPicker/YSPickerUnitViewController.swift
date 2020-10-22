@@ -89,6 +89,7 @@ class YSPickerUnitViewController: YSUnitViewController {
     
 
     override func viewDidLayoutSubviews() {
+        
         let w = self.view.frame.size.width
         let h = self.view.frame.size.height
         bg.frame = CGRect(x: 0, y: 0, width: w, height: h)
