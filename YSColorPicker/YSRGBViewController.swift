@@ -11,10 +11,11 @@ import UIKit
 
 class YSRGBViewController: YSColorLayoutViewController {
     
-    var colorType:YS_COLOR_TYPE = .YS_COLOR_RGBA
+    var colorType: YS_COLOR_TYPE = .YS_COLOR_RGBA
 
     
     override func viewDidLoad() {
+        
         super.viewDidLoad()
         self.view.backgroundColor = .clear
         
@@ -22,36 +23,36 @@ class YSRGBViewController: YSColorLayoutViewController {
         let red = YSColorUnitViewController(
             name: "Red:",
             maxValue: 255,
-            currentValue: 255*Double(r),
+            currentValue: 255 * Double(r),
             step: 1,
             colorFunc: redPickerColors
         )
         let green = YSColorUnitViewController(
             name: "Green:",
             maxValue: 255,
-            currentValue: 255*Double(g),
+            currentValue: 255 * Double(g),
             step: 1,
             colorFunc: greenPickerColors
         )
         let blue = YSColorUnitViewController(
             name: "Blue:",
             maxValue: 255,
-            currentValue: 255*Double(b),
+            currentValue: 255 * Double(b),
             step: 1,
             colorFunc: bluePickerColors
         )
         
         var alpha:YSColorUnitViewController?
-        if(colorType == .YS_COLOR_RGBA){
-            alpha = YSColorUnitViewController(
-                name: "Alpha:",
-                maxValue: 100,
-                currentValue: 100*Double(a),
-                step: 1,
-                colorFunc: alphaPickerColors
-            )
+        if(colorType == .YS_COLOR_RGBA) {
+            
+            alpha = YSColorUnitViewController(name: "Alpha:",
+                                              maxValue: 100,
+                                              currentValue: 100 * Double(a),
+                                              step: 1,
+                                              colorFunc: alphaPickerColors)
             colorControllers = [red,green,blue,alpha!]
-        }else{
+            
+        } else {
             colorControllers = [red,green,blue]
         }
         
@@ -62,11 +63,11 @@ class YSRGBViewController: YSColorLayoutViewController {
         self.addChild(red)
         self.view.addSubview(red.view)
         red.didMove(toParent: self)
-        red.stepperChangedFunc = { (value:Double) in
+        red.stepperChangedFunc = { (value: Double) in
             self.r = CGFloat(value/red.maxValue)
             self.allBarsUpdateAndDelegate()
         }
-        red.colorBar.slidedClosure = { (per:Double) in
+        red.colorBar.slidedClosure = { (per: Double) in
             self.r = CGFloat(per)
             red.currentValue = red.maxValue*per
             self.allBarsUpdateAndDelegate()

@@ -11,7 +11,7 @@ import UIKit
 // p Most likely just adjusts the layout of all the components
 
 
-public enum YS_COLOR_TYPE:String {
+public enum YS_COLOR_TYPE: String {
     
     case YS_COLOR_RGBA = "RGBA"
     case YS_COLOR_RGB = "RGB"
@@ -25,7 +25,9 @@ public enum YS_COLOR_TYPE:String {
 protocol YSColorLayoutViewControllerDelegate {
     
     func changed(color: UIColor)
+    
     func finished()
+    
     func getDefaultColor() -> UIColor
 }
 
@@ -95,9 +97,10 @@ class YSColorLayoutViewController: UIViewController {
             self.addChild(beforeAfter!)
             self.view.addSubview(beforeAfter!.view)
             beforeAfter!.beforeColor = (delegate?.getDefaultColor())!
-            if let ac = aftColor{
+            if let ac = aftColor {
                 beforeAfter!.afterColor = ac
-            }else{
+                
+            } else {
                 beforeAfter!.afterColor = (delegate?.getDefaultColor())!
             }
             beforeAfter!.didMove(toParent: self)
@@ -133,12 +136,12 @@ class YSColorLayoutViewController: UIViewController {
                 beforeAfter!.view.frame = CGRect(x: marginLR, y: marginTB+insets.top, width: fullWidth, height: beforeAfterHeight)
                 
                 height = min((h - doneHeight - marginTB*3 - space*countM1 - insets.top - insets.bottom)/count,maxHeight)
-                if(height == maxHeight){
+                if(height == maxHeight) {
                     space = min((h - height*count - doneHeight - marginTB*3 - insets.top - insets.bottom)/countM1,maxSpace)
                 }
                 top = marginTB+beforeAfterHeight+insets.top
                 
-            }else{
+            } else {
                 if(height == maxHeight){
                     space = min((h - height*count - doneHeight - marginTB*3)/countM1, maxSpace)
                 }
@@ -146,17 +149,21 @@ class YSColorLayoutViewController: UIViewController {
             
             
             
-            doneBtn.frame = CGRect(x: 0, y: h-self.tabBarController!.tabBar.frame.size.height-doneHeight, width: w, height: doneHeight)
+            doneBtn.frame = CGRect(x: 0, y: h-self.tabBarController!.tabBar.frame.size.height-doneHeight,
+                                   width: w, height: doneHeight)
             
-            var targetY:CGFloat =  top+marginTB
+            var targetY: CGFloat =  top+marginTB
             for vc in colorControllers {
-                vc.view.frame = CGRect(x: marginLR, y:targetY, width: fullWidth, height: height*vc.rowspan)
-                targetY += +space+height*vc.rowspan
+                
+                vc.view.frame = CGRect(x: marginLR, y: targetY,
+                                       width: fullWidth, height: height * vc.rowspan)
+                targetY += +space + height*vc.rowspan
             }
         }
     }
     
-    func setAfter(color:UIColor){
+    func setAfter(color:UIColor) {
+        
         aftColor = color
         beforeAfter!.update(color:aftColor!)
     }
@@ -165,7 +172,8 @@ class YSColorLayoutViewController: UIViewController {
         setAfter(color: color)
     }
     
-    func allBarsUpdateAndDelegate(){
+    func allBarsUpdateAndDelegate() {
+        
         for vc in colorControllers {
             vc.update()
         }
@@ -174,7 +182,8 @@ class YSColorLayoutViewController: UIViewController {
     
     
     
-    func allBarsUpdate(){
+    func allBarsUpdate() {
+        
         for vc in colorControllers {
             vc.update()
         }
@@ -207,78 +216,70 @@ class YSColorLayoutViewController: UIViewController {
     
     
     //各属性Bar用のカラー配列を生成 この配列からグラデーションを作る
-    func redPickerColors()->[CGColor]{
-        return [
-            UIColor(red: 1, green: g, blue: b, alpha: a).cgColor,
-            UIColor(red: 0, green: g, blue: b, alpha: a).cgColor
-        ]
+    func redPickerColors() -> [CGColor] {
+        
+        return [UIColor(red: 1, green: g, blue: b, alpha: a).cgColor,
+                UIColor(red: 0, green: g, blue: b, alpha: a).cgColor]
     }
     
-    func greenPickerColors()->[CGColor]{
-        return [
-            UIColor(red: r, green: 1, blue: b, alpha: a).cgColor,
-            UIColor(red: r, green: 0, blue: b, alpha: a).cgColor
-        ]
+    func greenPickerColors() -> [CGColor] {
+        
+        return [UIColor(red: r, green: 1, blue: b, alpha: a).cgColor,
+                UIColor(red: r, green: 0, blue: b, alpha: a).cgColor]
     }
     
-    func bluePickerColors()->[CGColor]{
-        return [
-            UIColor(red: r, green: g, blue: 1, alpha: a).cgColor,
-            UIColor(red: r, green: g, blue: 0, alpha: a).cgColor
-        ]
+    func bluePickerColors() -> [CGColor] {
+        
+        return [UIColor(red: r, green: g, blue: 1, alpha: a).cgColor,
+                UIColor(red: r, green: g, blue: 0, alpha: a).cgColor]
     }
     
-    func alphaPickerColors()->[CGColor]{
-        return [
-            UIColor(red: r, green: g, blue: b, alpha: 1).cgColor,
-            UIColor(red: r, green: g, blue: b, alpha: 0).cgColor
-        ]
+    func alphaPickerColors() -> [CGColor] {
+        
+        return [UIColor(red: r, green: g, blue: b, alpha: 1).cgColor,
+                UIColor(red: r, green: g, blue: b, alpha: 0).cgColor]
     }
     
-    func hsbAlphaPickerColors()->[CGColor]{
-        return [
-            UIColor(hue: h, saturation: s, brightness: b, alpha: 1).cgColor,
-            UIColor(hue: h, saturation: s, brightness: b, alpha: 0).cgColor
-        ]
+    func hsbAlphaPickerColors() -> [CGColor] {
+        
+        return [UIColor(hue: h, saturation: s, brightness: b, alpha: 1).cgColor,
+                UIColor(hue: h, saturation: s, brightness: b, alpha: 0).cgColor]
     }
     
-    func huePickerColors()->[CGColor]{
-        var colors:[CGColor] = []
+    func huePickerColors() -> [CGColor] {
+        
+        var colors: [CGColor] = []
         let stride1 = stride(from: 1, to: 0, by: -0.05)
+        
         for i in stride1 {
+            
             colors.append(
-                UIColor.init(
-                    hue: CGFloat(i),
-                    saturation: s,
-                    brightness: b,
-                    alpha: a
-                    ).cgColor
-            )
+                UIColor.init(hue: CGFloat(i),
+                             saturation: s,
+                             brightness: b,
+                             alpha: a).cgColor)
         }
         return colors
     }
     
-    func satPickerColors()->[CGColor]{
-        return [
-            UIColor(hue: h, saturation: 1, brightness: b, alpha: a).cgColor,
-            UIColor(hue: h, saturation: 0, brightness: b, alpha: a).cgColor
-        ]
+    func satPickerColors() -> [CGColor]{
+        
+        return [UIColor(hue: h, saturation: 1, brightness: b, alpha: a).cgColor,
+                UIColor(hue: h, saturation: 0, brightness: b, alpha: a).cgColor]
     }
     
     
-    func briPickerColors()->[CGColor]{
-        return [
-            UIColor(hue: h, saturation: s, brightness: 1, alpha: a).cgColor,
-            UIColor(hue: h, saturation: s, brightness: 0, alpha: a).cgColor
-        ]
+    func briPickerColors() -> [CGColor]{
+        
+        return [UIColor(hue: h, saturation: s, brightness: 1, alpha: a).cgColor,
+                UIColor(hue: h, saturation: s, brightness: 0, alpha: a).cgColor]
     }
     
     
-    func pickerColors()->[CGColor]{
-        return [
-            UIColor(hue: h, saturation: 1, brightness: 1, alpha: a).cgColor,
-            UIColor(hue: h, saturation: 0, brightness: 1, alpha: a).cgColor
-        ]
+    func pickerColors() -> [CGColor]{
+        
+        return [UIColor(hue: h, saturation: 1, brightness: 1, alpha: a).cgColor,
+                UIColor(hue: h, saturation: 0, brightness: 1, alpha: a).cgColor]
     }
     
 }

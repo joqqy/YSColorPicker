@@ -109,14 +109,11 @@
 			isa = PBXGroup;
 			children = (
 				9CA942422479139900F44132 /* YSColorPicker.h */,
-				9CA942402479139900F44132 /* YSArrowView.swift */,
-				9CA942392479139900F44132 /* YSBeforeAfterColorViewController.swift */,
-				9CA9423B2479139900F44132 /* YSGradientKnobView.swift */,
-				9CA942412479139900F44132 /* YSUnitViewController.swift */,
-				9CA9423C2479139900F44132 /* YSColorUnitViewController.swift */,
-				9CA9423D2479139900F44132 /* YSColorLayoutViewController.swift */,
-				9CA942472479139900F44132 /* YSBarBgView.swift */,
-				9CA9423E2479139900F44132 /* YSGradientBarView.swift */,
+				E2859B612542161400F38F9C /* top_swatches_and_arrow */,
+				E2859B622542164100F38F9C /* knob */,
+				E2859B632542191600F38F9C /* unit_view */,
+				E2859B64254219BF00F38F9C /* layout */,
+				E2859B65254219D000F38F9C /* bar_rectangles */,
 				9CA942442479139900F44132 /* YSPickerViewController.swift */,
 				9CA942432479139900F44132 /* YSPickerUnitViewController.swift */,
 				9CA9423F2479139900F44132 /* YSRGBViewController.swift */,
@@ -125,6 +122,49 @@
 			);
 			name = YSColorPicker;
 			path = ../YSColorPicker;
+			sourceTree = "<group>";
+		};
+		E2859B612542161400F38F9C /* top_swatches_and_arrow */ = {
+			isa = PBXGroup;
+			children = (
+				9CA942402479139900F44132 /* YSArrowView.swift */,
+				9CA942392479139900F44132 /* YSBeforeAfterColorViewController.swift */,
+			);
+			path = top_swatches_and_arrow;
+			sourceTree = "<group>";
+		};
+		E2859B622542164100F38F9C /* knob */ = {
+			isa = PBXGroup;
+			children = (
+				9CA9423B2479139900F44132 /* YSGradientKnobView.swift */,
+			);
+			path = knob;
+			sourceTree = "<group>";
+		};
+		E2859B632542191600F38F9C /* unit_view */ = {
+			isa = PBXGroup;
+			children = (
+				9CA942412479139900F44132 /* YSUnitViewController.swift */,
+				9CA9423C2479139900F44132 /* YSColorUnitViewController.swift */,
+			);
+			path = unit_view;
+			sourceTree = "<group>";
+		};
+		E2859B64254219BF00F38F9C /* layout */ = {
+			isa = PBXGroup;
+			children = (
+				9CA9423D2479139900F44132 /* YSColorLayoutViewController.swift */,
+			);
+			path = layout;
+			sourceTree = "<group>";
+		};
+		E2859B65254219D000F38F9C /* bar_rectangles */ = {
+			isa = PBXGroup;
+			children = (
+				9CA942472479139900F44132 /* YSBarBgView.swift */,
+				9CA9423E2479139900F44132 /* YSGradientBarView.swift */,
+			);
+			path = bar_rectangles;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
