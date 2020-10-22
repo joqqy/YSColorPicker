@@ -39,18 +39,18 @@ class YSPickerViewController: YSColorLayoutViewController {
             
             alpha = YSColorUnitViewController(name: "Alpha:",
                                               maxValue: 100,
-                                              currentValue: 100*Double(a),
+                                              currentValue: 100 * Double(a),
                                               step: 1,
                                               colorFunc: hsbAlphaPickerColors)
             
-            colorControllers = [picker,hue,alpha!]
+            colorControllers = [picker, hue, alpha!]
             
         } else {
             colorControllers = [picker,hue]
         }
         
         
-        
+        // gradient hsv box
         self.addChild(picker)
         self.view.addSubview(picker.view)
         picker.didMove(toParent: self)
@@ -64,7 +64,7 @@ class YSPickerViewController: YSColorLayoutViewController {
         }
         
         
-        
+        // spectrum bar
         self.addChild(hue)
         self.view.addSubview(hue.view)
         hue.didMove(toParent: self)
