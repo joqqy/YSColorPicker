@@ -10,7 +10,7 @@ import UIKit
 
 class YSPickerViewController: YSColorLayoutViewController {
     
-    var colorType:YS_COLOR_TYPE = .YS_COLOR_PICKER
+    var colorType: YS_COLOR_TYPE = .YS_COLOR_PICKER
     
     override func viewDidLoad() {
         
@@ -35,8 +35,8 @@ class YSPickerViewController: YSColorLayoutViewController {
         )
         
         
-        var alpha:YSColorUnitViewController?
-        if(colorType == .YS_COLOR_PICKERA){
+        var alpha: YSColorUnitViewController?
+        if(colorType == .YS_COLOR_PICKERA) {
             alpha = YSColorUnitViewController(
                 name: "Alpha:",
                 maxValue: 100,
@@ -45,7 +45,8 @@ class YSPickerViewController: YSColorLayoutViewController {
                 colorFunc: hsbAlphaPickerColors
             )
             colorControllers = [picker,hue,alpha!]
-        }else{
+            
+        } else {
             colorControllers = [picker,hue]
         }
         
@@ -116,12 +117,13 @@ class YSPickerViewController: YSColorLayoutViewController {
             colorControllers[1].currentValue = Double(h)*colorControllers[1].maxValue
             colorControllers[2].currentValue = Double(a)*colorControllers[2].maxValue
             
-        } else if (colorControllers.count==2){
+        } else if (colorControllers.count==2) {
             colorControllers[1].currentValue = Double(h)*colorControllers[1].maxValue
         }
     }
     
-    override func changed(){
+    override func changed() {
+        
         super.changed()
         delegate?.changed(color: UIColor(hue: h, saturation: s, brightness: b, alpha: a))
     }

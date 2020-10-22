@@ -22,7 +22,6 @@ public enum YS_COLOR_TYPE:String {
 }
 
 
-
 protocol YSColorLayoutViewControllerDelegate {
     
     func changed(color: UIColor)

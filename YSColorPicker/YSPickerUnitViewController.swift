@@ -9,6 +9,7 @@
 import UIKit
 
 class YSPickerUnitViewController: YSUnitViewController {
+    
     var brightnessFunc:(()->([CGColor]))!
     var saturationFunc:(()->([CGColor]))!
     var knobChangedFunc:((Double)->())?
@@ -75,6 +76,7 @@ class YSPickerUnitViewController: YSUnitViewController {
     }
     
     override func viewDidLoad() {
+        
         super.viewDidLoad()
         self.view.addSubview(bg)
         self.view.addSubview(colorBar)

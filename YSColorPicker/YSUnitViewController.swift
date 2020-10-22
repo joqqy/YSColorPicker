@@ -17,11 +17,12 @@ class YSUnitViewController: UIViewController {
     var maxValue: Double = 0
     var _currentValue: Double = 0
     var currentValue: Double {
-        get{
+        
+        get {
             return _currentValue
         }
         
-        set{
+        set {
             _currentValue = newValue
             update()
         }
@@ -31,12 +32,14 @@ class YSUnitViewController: UIViewController {
     var bg: UIView! = YSBarBgView()
 
     override func viewDidLoad() {
+        
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
     }
 
     override func didReceiveMemoryWarning() {
+        
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
@@ -45,6 +48,5 @@ class YSUnitViewController: UIViewController {
     }
     
     func finishing(){
-        
     }
 }

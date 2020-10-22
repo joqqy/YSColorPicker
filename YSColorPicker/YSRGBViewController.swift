@@ -125,15 +125,19 @@ class YSRGBViewController: YSColorLayoutViewController {
     }
     
     override func setNew(color:UIColor){
+        
         super.setNew(color: color)
         color.getRed(&r, green: &g, blue: &b, alpha: &a)
         
         if(colorControllers.count==4){
+            
             colorControllers[0].currentValue = Double(r)*colorControllers[0].maxValue
             colorControllers[1].currentValue = Double(g)*colorControllers[1].maxValue
             colorControllers[2].currentValue = Double(b)*colorControllers[2].maxValue
             colorControllers[3].currentValue = Double(a)*colorControllers[3].maxValue
-        }else if(colorControllers.count==3){
+            
+        } else if(colorControllers.count==3) {
+            
             colorControllers[0].currentValue = Double(r)*colorControllers[0].maxValue
             colorControllers[1].currentValue = Double(g)*colorControllers[1].maxValue
             colorControllers[2].currentValue = Double(b)*colorControllers[2].maxValue
