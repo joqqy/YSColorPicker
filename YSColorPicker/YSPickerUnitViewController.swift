@@ -10,30 +10,31 @@ import UIKit
 
 class YSPickerUnitViewController: YSUnitViewController {
     
-    var brightnessFunc:(()->([CGColor]))!
-    var saturationFunc:(()->([CGColor]))!
-    var knobChangedFunc:((Double)->())?
+    var brightnessFunc: (()->([CGColor]))!
+    var saturationFunc: (()->([CGColor]))!
+    var knobChangedFunc: ((Double)->())?
 
     var colorBarBrightness:YSGradientBarView! = YSGradientBarView()
 
-    var minSaturationValue:Double = 0
-    var maxSaturationValue:Double = 0
-    var _currentSaturationValue:Double = 0
+    var minSaturationValue: Double = 0
+    var maxSaturationValue: Double = 0
+    var _currentSaturationValue: Double = 0
     var currentSaturationValue: Double {
-        get{
+        
+        get {
             return _currentSaturationValue
         }
         
-        set{
+        set {
             _currentSaturationValue = newValue
             update()
         }
     }
 
     
-    var minBrightnessValue:Double = 0
-    var maxBrightnessValue:Double = 0
-    var _currentBrightnessValue:Double = 0
+    var minBrightnessValue: Double = 0
+    var maxBrightnessValue: Double = 0
+    var _currentBrightnessValue: Double = 0
     var currentBrightnessValue: Double {
         get{
             return _currentBrightnessValue
@@ -46,13 +47,12 @@ class YSPickerUnitViewController: YSUnitViewController {
     }
 
     
-    init(
-        maxSaturationValue:Double,
-        currentSaturationValue:Double,
-        maxBrightnessValue:Double,
-        currentBrightnessValue:Double,
-        colorFunc:@escaping (()->([CGColor]))
-        ) {
+    init(maxSaturationValue: Double,
+         currentSaturationValue: Double,
+         maxBrightnessValue: Double,
+         currentBrightnessValue: Double,
+         colorFunc: @escaping (()->([CGColor]))) {
+        
         super.init(nibName: nil, bundle: nil)
         self.maxSaturationValue = maxSaturationValue
         self.maxBrightnessValue = maxBrightnessValue
