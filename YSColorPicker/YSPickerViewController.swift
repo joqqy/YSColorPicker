@@ -17,13 +17,11 @@ class YSPickerViewController: YSColorLayoutViewController {
         super.viewDidLoad()
         self.view.backgroundColor = .clear
         
-        let picker = YSPickerUnitViewController(
-            maxSaturationValue: 1,
-            currentSaturationValue: Double(s),
-            maxBrightnessValue: 1,
-            currentBrightnessValue: Double(1-b),
-            colorFunc: pickerColors
-        )
+        let picker = YSPickerUnitViewController(maxSaturationValue: 1,
+                                                currentSaturationValue: Double(s),
+                                                maxBrightnessValue: 1,
+                                                currentBrightnessValue: Double(1-b),
+                                                colorFunc: pickerColors)
         
         
         let hue = YSColorUnitViewController(

@@ -8,13 +8,15 @@
 
 import UIKit
 
+// p This is the hsv gradient box for the picker mode
+
 class YSPickerUnitViewController: YSUnitViewController {
     
     var brightnessFunc: (()->([CGColor]))!
     var saturationFunc: (()->([CGColor]))!
     var knobChangedFunc: ((Double)->())?
 
-    var colorBarBrightness:YSGradientBarView! = YSGradientBarView()
+    var colorBarBrightness: YSGradientBarView! = YSGradientBarView()
 
     var minSaturationValue: Double = 0
     var maxSaturationValue: Double = 0
