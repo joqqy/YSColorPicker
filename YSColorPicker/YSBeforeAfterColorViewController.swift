@@ -6,7 +6,7 @@
 //  Copyright © 2018年 Yosuke Seki. All rights reserved.
 //
 
-// p I believe the two color rectangles/button at the top, with an arrow inbetween.
+// p I believe the two color rectangles/button at the top, with an arrow inbetween. One swatch shows the previously selected color and the other swatch the current.
 // Not sure which button(probably both), the old or the dynamic one that shows the color as the user changes it.
 
 import UIKit

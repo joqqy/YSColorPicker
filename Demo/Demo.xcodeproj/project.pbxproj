@@ -111,7 +111,6 @@
 				9CA942422479139900F44132 /* YSColorPicker.h */,
 				9CA942402479139900F44132 /* YSArrowView.swift */,
 				9CA942392479139900F44132 /* YSBeforeAfterColorViewController.swift */,
-				9CA9423A2479139900F44132 /* YSColorsTabViewController.swift */,
 				9CA9423B2479139900F44132 /* YSGradientKnobView.swift */,
 				9CA942412479139900F44132 /* YSUnitViewController.swift */,
 				9CA9423C2479139900F44132 /* YSColorUnitViewController.swift */,
@@ -122,6 +121,7 @@
 				9CA942432479139900F44132 /* YSPickerUnitViewController.swift */,
 				9CA9423F2479139900F44132 /* YSRGBViewController.swift */,
 				9CA942452479139900F44132 /* YSHSBViewController.swift */,
+				9CA9423A2479139900F44132 /* YSColorsTabViewController.swift */,
 			);
 			name = YSColorPicker;
 			path = ../YSColorPicker;

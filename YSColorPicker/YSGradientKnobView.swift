@@ -6,7 +6,7 @@
 //  Copyright © 2018年 Yosuke Seki. All rights reserved.
 //
 
-// This is the knob/handle in the big hsv gradient box.
+// This is the knob/handle in the big hsv gradient box(but also handles for the spectrum(and other bars)).
 // However, this also creates the handle in the spectrum/gradient bars. We must find a way to decouple this, because we want to control their appearance independently
 // TODO: p, make this a line circle
 
@@ -14,13 +14,15 @@ import UIKit
 
 class YSGradientKnobView: UIView {
     
+    // p the color of the handle
     var color: UIColor = .white
-    
+    // The calayer for the bar
     let barLayer = CALayer()
     
     init(color: UIColor) {
         
         super.init(frame: .zero)
+        
         self.color = color
         makeBar()
     }
@@ -48,10 +50,12 @@ class YSGradientKnobView: UIView {
         let h = frame.size.height
 
         if(moveY){
-            barLayer.frame = CGRect(x: -w * 0.5, y: -h * 0.5, width: w, height: h)
+            barLayer.frame = CGRect(x: -w * 0.5, y: -h * 0.5,
+                                    width: w, height: h)
             
         } else {
-            barLayer.frame = CGRect(x: -w * 0.5, y: 0, width: w, height: h)
+            barLayer.frame = CGRect(x: -w * 0.5, y: 0,
+                                    width: w, height: h)
         }
         clipsToBounds = false
     }

@@ -8,10 +8,11 @@
 
 import UIKit
 
+// YSColorUnitViewController will inherit from this class
 class YSUnitViewController: UIViewController {
     
     var rowspan: CGFloat = 1
-    var colorFunc: (()->([CGColor]))!
+    var colorFunc: (() -> ([CGColor]))!
     var isInit: Bool = false
     var minValue: Double = 0
     var maxValue: Double = 0

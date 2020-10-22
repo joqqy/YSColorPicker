@@ -12,8 +12,8 @@ import UIKit
 
 class YSPickerUnitViewController: YSUnitViewController {
     
-    var brightnessFunc: (()->([CGColor]))!
-    var saturationFunc: (()->([CGColor]))!
+    var brightnessFunc: (() -> ([CGColor]))!
+    var saturationFunc: (() -> ([CGColor]))!
     var knobChangedFunc: ((Double)->())?
 
     var colorBarBrightness: YSGradientBarView! = YSGradientBarView()
@@ -38,11 +38,12 @@ class YSPickerUnitViewController: YSUnitViewController {
     var maxBrightnessValue: Double = 0
     var _currentBrightnessValue: Double = 0
     var currentBrightnessValue: Double {
-        get{
+        
+        get {
             return _currentBrightnessValue
         }
         
-        set{
+        set {
             _currentBrightnessValue = newValue
             update()
         }
@@ -53,7 +54,7 @@ class YSPickerUnitViewController: YSUnitViewController {
          currentSaturationValue: Double,
          maxBrightnessValue: Double,
          currentBrightnessValue: Double,
-         colorFunc: @escaping (()->([CGColor]))) {
+         colorFunc: @escaping (() -> ([CGColor]))) {
         
         super.init(nibName: nil, bundle: nil)
         self.maxSaturationValue = maxSaturationValue
@@ -114,6 +115,7 @@ class YSPickerUnitViewController: YSUnitViewController {
     }
     
     override func update(){
+        
         knob.frame.origin.x = max(0,colorBar.frame.width*CGFloat(_currentSaturationValue/maxSaturationValue))
         knob.frame.origin.y = max(0,colorBar.frame.height*CGFloat(_currentBrightnessValue/maxBrightnessValue))
 
@@ -123,11 +125,10 @@ class YSPickerUnitViewController: YSUnitViewController {
         CATransaction.commit()
     }
     
-    func pickerBrightnessColors()->[CGColor]{
-        return [
-            UIColor(hue: 0, saturation: 0, brightness: 0, alpha: 0).cgColor,
-            UIColor(hue: 0, saturation: 0, brightness: 0, alpha: 1).cgColor
-        ]
+    func pickerBrightnessColors() -> [CGColor] {
+        
+        return [UIColor(hue: 0, saturation: 0, brightness: 0, alpha: 0).cgColor,
+                UIColor(hue: 0, saturation: 0, brightness: 0, alpha: 1).cgColor]
     }
     
 }
